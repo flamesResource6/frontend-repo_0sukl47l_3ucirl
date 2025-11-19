@@ -1,21 +1,24 @@
+import { useState } from 'react'
 import NavBar from './components/NavBar'
-import Hero from './components/Hero'
-import ProductGrid from './components/ProductGrid'
-import Story from './components/Story'
+import BookingHero from './components/BookingHero'
+import ServiceCards from './components/ServiceCards'
+import TrustBar from './components/TrustBar'
 import Footer from './components/Footer'
+import ContactWidget from './components/ContactWidget'
 
 function App() {
-  return (
-    <div className="min-h-screen bg-[#0f0f0f] text-white">
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_0%,rgba(255,255,255,0.06),transparent_30%),radial-gradient(circle_at_80%_100%,rgba(255,255,255,0.04),transparent_30%)]" />
+  const [lang, setLang] = useState('en') // 'en' | 'mt'
 
-      <NavBar />
-      <main className="relative">
-        <Hero />
-        <ProductGrid />
-        <Story />
+  return (
+    <div className="min-h-screen bg-[var(--bg-cream)] text-[var(--text-charcoal)] selection:bg-[var(--accent-teal)]/20 selection:text-[var(--text-charcoal)]">
+      <NavBar lang={lang} setLang={setLang} />
+      <main>
+        <BookingHero lang={lang} />
+        <TrustBar lang={lang} />
+        <ServiceCards lang={lang} />
       </main>
-      <Footer />
+      <Footer lang={lang} />
+      <ContactWidget lang={lang} />
     </div>
   )
 }

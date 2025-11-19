@@ -1,29 +1,35 @@
-function Footer() {
+function Footer({ lang }) {
+  const copy = {
+    en: { brand: 'Servizio', info: 'Info', policy: 'Privacy Policy', terms: 'Terms', contact: 'Contact', cta: 'Join updates', placeholder: 'Your email' },
+    mt: { brand: 'Servizz', info: 'Info', policy: 'Politika tal-Privatezza', terms: 'Termini', contact: 'Kuntatt', cta: 'Ingħaqad għall-aġġornamenti', placeholder: 'L-email tiegħek' },
+  }
+  const t = copy[lang]
+
   return (
-    <footer id="ethos" className="mt-24 border-t-8 border-black bg-[#ECE7E1] text-black">
+    <footer className="mt-24 border-t border-[var(--border-subtle)] bg-[var(--surface-offwhite)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <h4 className="font-black text-xl mb-2">Wabi•Brut</h4>
-            <p className="text-sm">A study in embrace and assertion. Built slowly, worn hard.</p>
+            <h4 className="font-semibold text-lg">{t.brand}</h4>
+            <p className="text-sm text-secondary mt-2">24/7 service booking. Professional, human, immediate.</p>
           </div>
           <div>
-            <p className="uppercase tracking-wider text-xs font-bold mb-2">Info</p>
+            <p className="uppercase tracking-wider text-xs font-semibold mb-2 text-secondary">{t.info}</p>
             <ul className="space-y-1 text-sm">
-              <li><a href="#" className="underline decoration-4 decoration-black underline-offset-4">Shipping & Returns</a></li>
-              <li><a href="#" className="underline decoration-4 decoration-black underline-offset-4">Care</a></li>
-              <li><a href="#" className="underline decoration-4 decoration-black underline-offset-4">Contact</a></li>
+              <li><a href="#" className="hover:underline">{t.policy}</a></li>
+              <li><a href="#" className="hover:underline">{t.terms}</a></li>
+              <li><a href="#help" className="hover:underline">{t.contact}</a></li>
             </ul>
           </div>
           <div>
-            <p className="uppercase tracking-wider text-xs font-bold mb-2">Newsletter</p>
+            <p className="uppercase tracking-wider text-xs font-semibold mb-2 text-secondary">Newsletter</p>
             <form className="flex gap-2">
-              <input className="flex-1 border-4 border-black px-3 py-2 bg-white placeholder-black/60" placeholder="email" />
-              <button className="bg-black text-white px-4 border-4 border-black font-bold">Join</button>
+              <input className="flex-1 ring-subtle rounded-md px-3 py-2 bg-white placeholder:text-tertiary text-sm" placeholder={t.placeholder} />
+              <button className="px-4 rounded-md bg-[var(--accent-teal)] hover:bg-[var(--accent-teal-dark)] text-white text-sm font-medium pressable">{t.cta}</button>
             </form>
           </div>
         </div>
-        <div className="mt-10 text-xs uppercase tracking-widest border-t border-black pt-4">© {new Date().getFullYear()} Wabi•Brut Atelier</div>
+        <div className="mt-10 text-xs text-tertiary border-t border-[var(--border-subtle)] pt-4">© {new Date().getFullYear()} {t.brand}</div>
       </div>
     </footer>
   )
